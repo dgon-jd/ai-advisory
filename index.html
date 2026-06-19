@@ -3,24 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>1-on-1 AI Advisory — dg0n</title>
-<meta name="description" content="1-on-1 AI advisory for technical founders and CTOs shipping AI features. Architecture reviews, model selection, and agent design from someone who builds them in production." />
+<title>AI Advisory for Founders & CTOs — dg0n</title>
+<meta name="description" content="1-on-1 AI advisory and workflow setup for founders and CTOs. Book an Advisory Call or get working AI systems installed in your business in 2 weeks." />
 
 <!-- Open Graph -->
-<meta property="og:title" content="1-on-1 AI Advisory — dg0n" />
-<meta property="og:description" content="Book a focused session to de-risk your AI architecture, model choices, and agent design." />
+<meta property="og:title" content="AI Advisory for Founders & CTOs — dg0n" />
+<meta property="og:description" content="Stop experimenting. Book an Advisory Call or get AI actually installed in your business." />
 <meta property="og:type" content="website" />
 
 <!--
   ============================================================================
-  ⚙️  CONFIG — EDIT THESE TWO LINES, THEN DEPLOY. Nothing else is required.
+  ⚙️  CONFIG — Edit these three values, then deploy. Nothing else required.
   ============================================================================
-  1. BOOKING_URL  — your Calendly / Cal.com link (one event type per tier, or one with a paid add-on)
-  2. PAYMENT_URL  — your Stripe Payment Link (or set booking tool to collect payment on confirm)
-
-  If your booking tool collects payment itself (Cal.com + Stripe, or Calendly + Stripe),
-  you can point both "Book" buttons at BOOKING_URL and hide the separate pay step.
-  See the <script> CONFIG block at the bottom of this file.
+  BOOKING_URL_ADVISORY  — Cal.com link for the $750 AI Advisory Call event type
+  BOOKING_URL_SETUP     — Cal.com link for the $3,500 Workflow Setup event type
+  (contact email is already set in the footer and lead form below)
   ============================================================================
 -->
 
@@ -120,13 +117,18 @@
   .tier .price { font-size: 2.4rem; font-weight: 750; letter-spacing: -.02em; margin: 8px 0 2px; }
   .tier .price span { font-size: 1rem; color: var(--muted); font-weight: 500; }
   .tier .who { color: var(--muted); font-size: .92rem; margin-bottom: 18px; }
-  .tier ul { list-style: none; margin: 0 0 24px; display: grid; gap: 11px; }
+  .tier ul { list-style: none; margin: 0 0 18px; display: grid; gap: 11px; }
   .tier li { position: relative; padding-left: 28px; color: var(--text); font-size: .96rem; }
   .tier li::before {
     content: "✓"; position: absolute; left: 0; top: 0; color: var(--good); font-weight: 700;
     background: rgba(52,211,153,.12); width: 20px; height: 20px; border-radius: 50%;
     display: grid; place-items: center; font-size: .72rem;
   }
+  .tier .promise {
+    padding: 13px 16px; background: var(--accent-soft); border: 1px solid var(--line);
+    border-radius: 10px; font-size: .91rem; color: var(--text); margin-bottom: 22px;
+  }
+  .tier .promise em { color: var(--accent); font-style: normal; font-weight: 600; }
   .tier .btn { margin-top: auto; text-align: center; }
 
   /* How it works */
@@ -138,11 +140,6 @@
   }
   .step h3 { font-size: 1rem; margin-bottom: 4px; }
   .step p { color: var(--muted); font-size: .92rem; }
-
-  /* Deliverables */
-  .deliver { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; max-width: 760px; }
-  .deliver div { padding-left: 26px; position: relative; color: var(--text); }
-  .deliver div::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
 
   /* FAQ */
   details { border: 1px solid var(--line); border-radius: 12px; padding: 0 20px; margin-bottom: 12px; background: var(--bg-soft); }
@@ -171,7 +168,7 @@
   footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; text-align: center; }
 
   @media (max-width: 760px) {
-    .grid3, .tiers, .steps, .deliver { grid-template-columns: 1fr; }
+    .grid3, .tiers, .steps { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -180,27 +177,27 @@
 <div class="wrap">
   <nav>
     <div class="brand">dg0n <span>· AI Advisory</span></div>
-    <a class="nav-cta book" href="#pricing">Book a session</a>
+    <a class="nav-cta" href="#pricing">Book a session</a>
   </nav>
 
   <header class="hero">
-    <div class="eyebrow">1-on-1 AI Advisory</div>
-    <h1>Ship AI features that actually hold up in production.</h1>
+    <div class="eyebrow">AI Advisory for Founders &amp; CTOs</div>
+    <h1>You know AI is leverage. Let's actually install it.</h1>
     <p class="sub">
-      A focused working session with an AI architect who builds these systems daily —
-      so your team stops guessing on model choices, agent design, and what to build vs. buy.
+      Most founders are stuck at the ChatGPT tab. A working session with someone who ships
+      production AI systems gets you past the experiment phase and into real workflow gains.
     </p>
     <div class="hero-actions">
-      <a class="btn book" href="#pricing">Book a session →</a>
+      <a class="btn" href="#pricing">See the offers →</a>
       <a class="btn secondary" href="#how">How it works</a>
     </div>
-    <div class="reassure">Built for founders &amp; CTOs · <b>100% money-back</b> if you don't leave with clear next steps</div>
+    <div class="reassure">For founders &amp; CTOs · <b>100% refund</b> if you don't leave with a clear 30-day plan</div>
   </header>
 
   <div class="trust">
-    <div><span class="dot"></span> LLM &amp; agent architecture</div>
-    <div><span class="dot"></span> Model selection &amp; eval strategy</div>
-    <div><span class="dot"></span> Cost, latency &amp; reliability</div>
+    <div><span class="dot"></span> AI workflow design &amp; installation</div>
+    <div><span class="dot"></span> Founder-grade stack selection</div>
+    <div><span class="dot"></span> Ops automation that actually ships</div>
   </div>
 </div>
 
@@ -208,20 +205,20 @@
 <section id="who">
   <div class="wrap">
     <div class="eyebrow">Who this is for</div>
-    <h2>You're shipping AI — and the architecture decisions are getting expensive.</h2>
-    <p class="lead">If a single bad call on models, agents, or infra could cost you months, an hour with someone who's already made those calls pays for itself.</p>
+    <h2>AI should be doing real work in your business — not just answering questions.</h2>
+    <p class="lead">If you're tool-overwhelmed, stuck experimenting, or watching competitors automate while you manually grind — this is for you.</p>
     <div class="grid3">
       <div class="mini">
-        <h3>Technical founders</h3>
-        <p>Putting an AI feature at the center of the product and want it de-risked before you commit eng cycles.</p>
+        <h3>Founders &amp; solo operators</h3>
+        <p>You feel AI is leverage but nothing's sticking. You want someone to tell you exactly what to build — and then build it with you.</p>
       </div>
       <div class="mini">
         <h3>CTOs &amp; eng leaders</h3>
-        <p>Owning an AI roadmap and want a senior second opinion on architecture, evals, and build-vs-buy.</p>
+        <p>You're evaluating AI tooling for your team and want a senior second opinion before you commit months of eng cycles to the wrong approach.</p>
       </div>
       <div class="mini">
-        <h3>Teams stuck in the demo-to-prod gap</h3>
-        <p>Your prototype works; production is flaky, slow, or expensive — and you need a path out.</p>
+        <h3>Operators drowning in manual work</h3>
+        <p>Inbox triage, research, content, reporting — you know AI could handle it. You just need someone to actually set it up and hand it over.</p>
       </div>
     </div>
   </div>
@@ -232,55 +229,46 @@
   <div class="wrap">
     <div class="eyebrow">The offer</div>
     <h2>Two ways to work together</h2>
-    <p class="lead">Both are 1-on-1, remote, and end with a written recap you can hand to your team. No retainers, no fluff.</p>
+    <p class="lead">Both are 1-on-1, remote, and end with written output you can act on today. No retainers, no decks, no fluff.</p>
 
     <div class="tiers" style="text-align:left">
+
+      <!-- Offer 1: Advisory Call -->
       <div class="tier">
-        <h3>Strategy Call</h3>
-        <div class="price">$500 <span>/ 60 min</span></div>
-        <div class="who">One focused problem, solved live.</div>
+        <h3>AI Advisory Call</h3>
+        <div class="price">$750 <span>flat · 60 min</span></div>
+        <div class="who">One session. Leave with a plan you can execute this month.</div>
         <ul>
-          <li>60-min working session (recorded on request)</li>
-          <li>One topic: model selection, agent design, build-vs-buy, or an architecture sanity-check</li>
-          <li>Written recap with prioritized next steps</li>
-          <li>Reference links &amp; patterns to take to your team</li>
-          <li>48-hour async follow-up for clarifying questions</li>
+          <li>60-minute live 1-on-1 working session</li>
+          <li>Focused on your #1 AI bottleneck — workflow, stack, or tooling decision</li>
+          <li>1-page Action Brief within 24 hours: top 3 moves, tools, 30-day sequence</li>
+          <li>7 days of async follow-up to unblock execution</li>
+          <li>Recording on request</li>
         </ul>
-        <a class="btn secondary book" data-tier="strategy" href="#" style="text-align:center">Book a Strategy Call</a>
+        <div class="promise"><em>Promise:</em> "Leave the call knowing exactly which 3 AI moves to make this month — and why."</div>
+        <a class="btn secondary" data-tier="advisory" href="#" style="text-align:center">Book an Advisory Call</a>
       </div>
 
+      <!-- Offer 2: Workflow Setup -->
       <div class="tier featured">
-        <div class="badge">Most popular</div>
-        <h3>Architecture Deep-Dive</h3>
-        <div class="price">$1,000 <span>/ 90 min + review</span></div>
-        <div class="who">I review your system before we meet, then we fix the hard parts.</div>
+        <div class="badge">Done-with-you</div>
+        <h3>Founder AI Workflow Setup</h3>
+        <div class="price">$3,500 <span>/ 2-week engagement</span></div>
+        <div class="who">We don't advise — we install. Working AI systems in your business.</div>
         <ul>
-          <li>Pre-call review of your AI system, repo, or design docs</li>
-          <li>90-min working session (recorded on request)</li>
-          <li>Written architecture review with prioritized, ranked recommendations</li>
-          <li>Coverage of reliability, cost/latency, eval strategy &amp; agent orchestration</li>
-          <li>7-day async follow-up window</li>
+          <li>Audit of your current founder/exec workflows</li>
+          <li>2–3 production AI workflows built and handed over</li>
+          <li>Typical installs: inbox triage, research briefs, content repurposing, reporting, ops automation</li>
+          <li>SOP doc + Loom walkthroughs so your team can run and extend it</li>
+          <li>2 live checkpoints + 30-day follow-up call</li>
+          <li>Advisory Call fee credited if you convert within 14 days</li>
         </ul>
-        <a class="btn book" data-tier="deepdive" href="#" style="text-align:center">Book a Deep-Dive</a>
+        <div class="promise"><em>Promise:</em> "In 2 weeks you have working AI systems doing real work — not a slide deck."</div>
+        <a class="btn" data-tier="setup" href="#" style="text-align:center">Book a Workflow Setup</a>
       </div>
-    </div>
-    <p class="reassure" style="margin-top:24px">Team session or a scope between these? <a class="book" href="#">Book the Deep-Dive</a> and note it in the intake — we'll right-size it.</p>
-  </div>
-</section>
 
-<!-- Deliverables -->
-<section id="deliverables">
-  <div class="wrap">
-    <div class="eyebrow">What you walk away with</div>
-    <h2>Concrete output, not just a nice chat.</h2>
-    <div class="deliver" style="margin-top:18px">
-      <div>A recorded working session (if you want it)</div>
-      <div>A written recap / architecture review</div>
-      <div>Prioritized, ranked recommendations</div>
-      <div>Reference architectures &amp; patterns</div>
-      <div>Specific model / tool / vendor guidance</div>
-      <div>An async follow-up window for questions</div>
     </div>
+    <p class="reassure" style="margin-top:24px">Not sure which fits? <a data-tier="advisory" href="#">Book the Advisory Call</a> — it's usually the right first step, and the fee applies toward a Setup within 14 days.</p>
   </div>
 </section>
 
@@ -288,12 +276,12 @@
 <section id="how">
   <div class="wrap">
     <div class="eyebrow">How it works</div>
-    <h2>From booking to recap in under a week.</h2>
+    <h2>Booking to working output in under a week.</h2>
     <div class="steps" style="margin-top:18px">
-      <div class="step"><div class="n">1</div><h3>Book &amp; pay</h3><p>Pick a slot and confirm. Payment secures the time.</p></div>
-      <div class="step"><div class="n">2</div><h3>Intake</h3><p>Short form so I show up with context — plus any docs or repo access for a Deep-Dive.</p></div>
-      <div class="step"><div class="n">3</div><h3>The session</h3><p>We work the actual problem live. No slides.</p></div>
-      <div class="step"><div class="n">4</div><h3>Written recap</h3><p>You get the recap and next steps within 2 business days.</p></div>
+      <div class="step"><div class="n">1</div><h3>Book &amp; pay</h3><p>Pick a slot and confirm. Payment secures the time — no-shows aren't a thing.</p></div>
+      <div class="step"><div class="n">2</div><h3>Intake form</h3><p>Short form so I arrive with context: your role, company, #1 bottleneck, current AI stack.</p></div>
+      <div class="step"><div class="n">3</div><h3>The session</h3><p>We work your actual problem live. No slides. Real decisions, in real time.</p></div>
+      <div class="step"><div class="n">4</div><h3>Action Brief</h3><p>1-page written recap with prioritized next steps lands in your inbox within 24 hours.</p></div>
     </div>
   </div>
 </section>
@@ -304,11 +292,30 @@
     <div class="eyebrow">FAQ</div>
     <h2>Questions</h2>
     <div style="margin-top:18px">
-      <details><summary>What's your money-back guarantee?</summary><p>If you finish the session and don't have clear, actionable next steps, reply within 48 hours and I'll refund it in full. No forms, no friction.</p></details>
-      <details><summary>What time zones do you cover?</summary><p>Booking shows live availability in your time zone. If nothing fits, book anyway and note your constraints in the intake — I'll find a slot.</p></details>
-      <details><summary>Can my team join?</summary><p>Yes. Up to a few people can join the call. For a working team session, book the Deep-Dive and flag it in the intake so we scope it right.</p></details>
-      <details><summary>Is this confidential?</summary><p>Yes. Everything you share stays between us. Happy to sign a mutual NDA before a Deep-Dive — mention it in the intake.</p></details>
-      <details><summary>What do you need before a Deep-Dive?</summary><p>Whatever paints the picture: design docs, an architecture diagram, key code paths, or read-only repo access. The more I see beforehand, the more we get done live.</p></details>
+      <details>
+        <summary>What's your money-back guarantee?</summary>
+        <p>If you finish the session and don't leave with a clear, actionable 30-day plan, reply within 48 hours and I'll refund it in full. No forms, no friction.</p>
+      </details>
+      <details>
+        <summary>What's the difference between the Advisory Call and Workflow Setup?</summary>
+        <p>The Advisory Call is a 60-minute session where we diagnose your top AI leverage points and I hand you a written action plan the next day. The Workflow Setup is a 2-week hands-on engagement where I actually build 2–3 AI workflows in your business and hand them over with SOPs. Start with the call if you're unsure — the fee credits toward a Setup within 14 days.</p>
+      </details>
+      <details>
+        <summary>What kind of workflows do you build in the Setup?</summary>
+        <p>Common installs: inbox triage, daily research briefs, content repurposing pipelines, recurring reports, proposal/SOP generation, customer research summaries. If your workflow is repetitive and involves text or data, it's probably automatable.</p>
+      </details>
+      <details>
+        <summary>Do I need a technical team for the Workflow Setup?</summary>
+        <p>No. Most workflows run without any custom dev work — we use tools you or your ops team can maintain without an engineer. If something requires code, I'll scope it and tell you up front before we start.</p>
+      </details>
+      <details>
+        <summary>What time zones do you cover?</summary>
+        <p>Booking shows live availability in your time zone. If nothing fits, book anyway and note your constraints in the intake — I'll find a slot.</p>
+      </details>
+      <details>
+        <summary>Is this confidential?</summary>
+        <p>Yes. Everything stays between us. Happy to sign a mutual NDA before a Workflow Setup — just mention it in the intake form.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -318,7 +325,7 @@
   <div class="wrap center">
     <div class="eyebrow">Not ready to book yet?</div>
     <h2>Get the AI Leverage Audit — free.</h2>
-    <p class="lead">A self-scoring checklist that surfaces the 2–3 AI moves with the highest leverage for your workflow. Takes 5 minutes.</p>
+    <p class="lead">A self-scoring checklist that surfaces the 2–3 highest-leverage AI moves for your workflow. Takes 5 minutes.</p>
     <div class="lead-form-wrap">
       <form id="lead-form" action="https://formsubmit.co/ptnpnkh02@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New lead — AI Advisory page" />
@@ -339,15 +346,15 @@
 <!-- Final CTA -->
 <section class="finalcta">
   <div class="wrap">
-    <h2>Stop guessing on your AI architecture.</h2>
-    <p class="lead center">Book a session this week and walk away with a plan your team can ship.</p>
-    <a class="btn book" href="#pricing">Book a session →</a>
+    <h2>Stop researching. Start running AI that works.</h2>
+    <p class="lead center">Book an Advisory Call this week and walk away with a plan — or a full Workflow Setup if you're ready to move fast.</p>
+    <a class="btn" href="#pricing">See the offers →</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    © <span id="yr"></span> dg0n · 1-on-1 AI Advisory · <a href="mailto:ptnpnkh02@gmail.com">Contact</a>
+    © <span id="yr"></span> dg0n · AI Advisory · <a href="mailto:ptnpnkh02@gmail.com">Contact</a>
   </div>
 </footer>
 
@@ -356,26 +363,17 @@
      CONFIG — set these once and the buttons wire themselves up.
      ========================================================================== */
   const CONFIG = {
-    // Your booking link (Calendly or Cal.com). Add ?utm or per-tier event types if you like.
-    BOOKING_URL: "https://REPLACE_WITH_YOUR_CALENDLY_OR_CAL_LINK",
-
-    // Optional per-tier booking links. If set, they override BOOKING_URL for that tier.
-    BOOKING_URL_STRATEGY: "",   // e.g. https://cal.com/dg0n/strategy-call
-    BOOKING_URL_DEEPDIVE: "",   // e.g. https://cal.com/dg0n/architecture-deep-dive
-
-    // If your booking tool already collects payment on confirm (recommended), leave this empty.
-    // Otherwise set a Stripe Payment Link and buttons will send users to pay.
-    PAYMENT_URL: ""             // e.g. https://buy.stripe.com/xxxx
+    BOOKING_URL_ADVISORY: "",  // https://cal.com/dg0n/ai-advisory-call
+    BOOKING_URL_SETUP:    "",  // https://cal.com/dg0n/workflow-setup
   };
 
   // Footer year
-  document.getElementById("yr").textContent = "2026";
+  document.getElementById("yr").textContent = new Date().getFullYear();
 
-  // Lead form: set _next redirect URL so FormSubmit returns here with ?lead=1
+  // Lead form: set _next so FormSubmit returns here with ?lead=1
   (function () {
     var nextEl = document.getElementById("form-next");
     if (nextEl) nextEl.value = window.location.href.split("?")[0] + "?lead=1";
-    // Show success banner if redirected back
     if (new URLSearchParams(window.location.search).get("lead") === "1") {
       var form = document.getElementById("lead-form");
       var msg  = document.getElementById("success-msg");
@@ -384,27 +382,20 @@
     }
   })();
 
-  // Wire every .book element to the right destination.
+  // Wire booking buttons to the right Cal.com event type.
   function destFor(tier) {
-    if (tier === "strategy" && CONFIG.BOOKING_URL_STRATEGY) return CONFIG.BOOKING_URL_STRATEGY;
-    if (tier === "deepdive" && CONFIG.BOOKING_URL_DEEPDIVE) return CONFIG.BOOKING_URL_DEEPDIVE;
-    // Payment-first flow only if booking tool doesn't collect payment itself.
-    if (CONFIG.PAYMENT_URL) return CONFIG.PAYMENT_URL;
-    return CONFIG.BOOKING_URL;
+    if (tier === "advisory" && CONFIG.BOOKING_URL_ADVISORY) return CONFIG.BOOKING_URL_ADVISORY;
+    if (tier === "setup"    && CONFIG.BOOKING_URL_SETUP)    return CONFIG.BOOKING_URL_SETUP;
+    return CONFIG.BOOKING_URL_ADVISORY || CONFIG.BOOKING_URL_SETUP || "";
   }
 
-  document.querySelectorAll(".book").forEach(function (el) {
-    const href = el.getAttribute("href") || "";
-    // Leave on-page anchors (#pricing, #how) alone — they scroll.
-    if (href.startsWith("#") && href.length > 1 && el.dataset.tier === undefined) return;
+  document.querySelectorAll("[data-tier]").forEach(function (el) {
     el.addEventListener("click", function (e) {
-      const tier = el.dataset.tier;
-      const dest = destFor(tier);
-      if (dest && dest.indexOf("REPLACE_WITH") === -1) {
+      var dest = destFor(el.dataset.tier);
+      if (dest) {
         e.preventDefault();
         window.open(dest, "_blank", "noopener");
       }
-      // If still a placeholder, anchor buttons just scroll to #pricing (default behavior).
     });
   });
 </script>
