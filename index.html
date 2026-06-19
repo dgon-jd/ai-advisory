@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1-on-1 AI Advisory — dg0n</title>
+<meta name="description" content="1-on-1 AI advisory for technical founders and CTOs shipping AI features. Architecture reviews, model selection, and agent design from someone who builds them in production." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="1-on-1 AI Advisory — dg0n" />
+<meta property="og:description" content="Book a focused session to de-risk your AI architecture, model choices, and agent design." />
+<meta property="og:type" content="website" />
+
+<!--
+  ============================================================================
+  ⚙️  CONFIG — EDIT THESE TWO LINES, THEN DEPLOY. Nothing else is required.
+  ============================================================================
+  1. BOOKING_URL  — your Calendly / Cal.com link (one event type per tier, or one with a paid add-on)
+  2. PAYMENT_URL  — your Stripe Payment Link (or set booking tool to collect payment on confirm)
+
+  If your booking tool collects payment itself (Cal.com + Stripe, or Calendly + Stripe),
+  you can point both "Book" buttons at BOOKING_URL and hide the separate pay step.
+  See the <script> CONFIG block at the bottom of this file.
+  ============================================================================
+-->
+
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-soft: #12151a;
+    --card: #161a20;
+    --line: #232a33;
+    --text: #e7ecf2;
+    --muted: #9aa6b2;
+    --accent: #5b9dff;
+    --accent-soft: #1c2a44;
+    --good: #34d399;
+    --radius: 14px;
+    --maxw: 980px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(1200px 600px at 50% -10%, #14203a 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .14em; font-size: .76rem;
+    color: var(--accent); font-weight: 600;
+  }
+
+  /* Nav */
+  nav { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-weight: 700; letter-spacing: -.01em; }
+  .brand span { color: var(--muted); font-weight: 500; }
+  .nav-cta {
+    border: 1px solid var(--line); padding: 9px 16px; border-radius: 999px;
+    color: var(--text); font-size: .9rem; transition: border-color .2s, background .2s;
+  }
+  .nav-cta:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+  /* Hero */
+  header.hero { padding: 64px 0 40px; text-align: center; }
+  header.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.3rem); line-height: 1.08; letter-spacing: -.02em;
+    font-weight: 750; margin: 18px auto 18px; max-width: 760px;
+  }
+  header.hero p.sub {
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--muted);
+    max-width: 640px; margin: 0 auto 30px;
+  }
+  .btn {
+    display: inline-block; background: var(--accent); color: #06112a; font-weight: 650;
+    padding: 14px 26px; border-radius: 999px; font-size: 1rem;
+    transition: transform .12s ease, box-shadow .2s ease;
+    box-shadow: 0 8px 30px rgba(91,157,255,.25);
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(91,157,255,.35); }
+  .btn.secondary { background: transparent; color: var(--text); border: 1px solid var(--line); box-shadow: none; }
+  .btn.secondary:hover { border-color: var(--accent); }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .reassure { color: var(--muted); font-size: .9rem; margin-top: 16px; }
+  .reassure b { color: var(--good); }
+
+  /* Trust row */
+  .trust { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin: 40px 0 8px; color: var(--muted); font-size: .92rem; }
+  .trust div { display: flex; align-items: center; gap: 8px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* Sections */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); letter-spacing: -.01em; margin: 10px 0 8px; }
+  section .lead { color: var(--muted); max-width: 620px; margin-bottom: 28px; }
+  .center { text-align: center; }
+  .center .lead { margin-left: auto; margin-right: auto; }
+
+  /* "Who it's for" */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .mini { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .mini h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .mini p { color: var(--muted); font-size: .95rem; }
+
+  /* Pricing */
+  .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 8px; }
+  .tier {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 30px; display: flex; flex-direction: column; position: relative;
+  }
+  .tier.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset, 0 20px 60px rgba(91,157,255,.12); }
+  .tier .badge {
+    position: absolute; top: -12px; right: 22px; background: var(--accent); color: #06112a;
+    font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; letter-spacing: .04em;
+  }
+  .tier h3 { font-size: 1.25rem; }
+  .tier .price { font-size: 2.4rem; font-weight: 750; letter-spacing: -.02em; margin: 8px 0 2px; }
+  .tier .price span { font-size: 1rem; color: var(--muted); font-weight: 500; }
+  .tier .who { color: var(--muted); font-size: .92rem; margin-bottom: 18px; }
+  .tier ul { list-style: none; margin: 0 0 24px; display: grid; gap: 11px; }
+  .tier li { position: relative; padding-left: 28px; color: var(--text); font-size: .96rem; }
+  .tier li::before {
+    content: "✓"; position: absolute; left: 0; top: 0; color: var(--good); font-weight: 700;
+    background: rgba(52,211,153,.12); width: 20px; height: 20px; border-radius: 50%;
+    display: grid; place-items: center; font-size: .72rem;
+  }
+  .tier .btn { margin-top: auto; text-align: center; }
+
+  /* How it works */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: step; }
+  .step { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .step .n {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+    display: grid; place-items: center; font-weight: 700; margin-bottom: 12px; border: 1px solid var(--line);
+  }
+  .step h3 { font-size: 1rem; margin-bottom: 4px; }
+  .step p { color: var(--muted); font-size: .92rem; }
+
+  /* Deliverables */
+  .deliver { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; max-width: 760px; }
+  .deliver div { padding-left: 26px; position: relative; color: var(--text); }
+  .deliver div::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+  /* FAQ */
+  details { border: 1px solid var(--line); border-radius: 12px; padding: 0 20px; margin-bottom: 12px; background: var(--bg-soft); }
+  details summary { cursor: pointer; padding: 18px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: "+"; color: var(--accent); font-size: 1.3rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { color: var(--muted); padding-bottom: 18px; max-width: 720px; }
+
+  /* Final CTA */
+  .finalcta { text-align: center; background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
+
+  /* Lead capture form */
+  .lead-form-wrap { max-width: 520px; margin: 0 auto; }
+  .lead-form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .lead-email {
+    flex: 1; min-width: 200px; padding: 13px 18px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--bg-soft); color: var(--text);
+    font-size: 1rem; outline: none; transition: border-color .2s;
+  }
+  .lead-email:focus { border-color: var(--accent); }
+  .lead-email::placeholder { color: var(--muted); }
+  .lead-msg { color: var(--muted); font-size: .84rem; margin-top: 12px; }
+  .success-msg { display: none; color: var(--good); font-weight: 600; margin-top: 14px; }
+
+  footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; text-align: center; }
+
+  @media (max-width: 760px) {
+    .grid3, .tiers, .steps, .deliver { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">dg0n <span>· AI Advisory</span></div>
+    <a class="nav-cta book" href="#pricing">Book a session</a>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">1-on-1 AI Advisory</div>
+    <h1>Ship AI features that actually hold up in production.</h1>
+    <p class="sub">
+      A focused working session with an AI architect who builds these systems daily —
+      so your team stops guessing on model choices, agent design, and what to build vs. buy.
+    </p>
+    <div class="hero-actions">
+      <a class="btn book" href="#pricing">Book a session →</a>
+      <a class="btn secondary" href="#how">How it works</a>
+    </div>
+    <div class="reassure">Built for founders &amp; CTOs · <b>100% money-back</b> if you don't leave with clear next steps</div>
+  </header>
+
+  <div class="trust">
+    <div><span class="dot"></span> LLM &amp; agent architecture</div>
+    <div><span class="dot"></span> Model selection &amp; eval strategy</div>
+    <div><span class="dot"></span> Cost, latency &amp; reliability</div>
+  </div>
+</div>
+
+<!-- Who it's for -->
+<section id="who">
+  <div class="wrap">
+    <div class="eyebrow">Who this is for</div>
+    <h2>You're shipping AI — and the architecture decisions are getting expensive.</h2>
+    <p class="lead">If a single bad call on models, agents, or infra could cost you months, an hour with someone who's already made those calls pays for itself.</p>
+    <div class="grid3">
+      <div class="mini">
+        <h3>Technical founders</h3>
+        <p>Putting an AI feature at the center of the product and want it de-risked before you commit eng cycles.</p>
+      </div>
+      <div class="mini">
+        <h3>CTOs &amp; eng leaders</h3>
+        <p>Owning an AI roadmap and want a senior second opinion on architecture, evals, and build-vs-buy.</p>
+      </div>
+      <div class="mini">
+        <h3>Teams stuck in the demo-to-prod gap</h3>
+        <p>Your prototype works; production is flaky, slow, or expensive — and you need a path out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="center">
+  <div class="wrap">
+    <div class="eyebrow">The offer</div>
+    <h2>Two ways to work together</h2>
+    <p class="lead">Both are 1-on-1, remote, and end with a written recap you can hand to your team. No retainers, no fluff.</p>
+
+    <div class="tiers" style="text-align:left">
+      <div class="tier">
+        <h3>Strategy Call</h3>
+        <div class="price">$500 <span>/ 60 min</span></div>
+        <div class="who">One focused problem, solved live.</div>
+        <ul>
+          <li>60-min working session (recorded on request)</li>
+          <li>One topic: model selection, agent design, build-vs-buy, or an architecture sanity-check</li>
+          <li>Written recap with prioritized next steps</li>
+          <li>Reference links &amp; patterns to take to your team</li>
+          <li>48-hour async follow-up for clarifying questions</li>
+        </ul>
+        <a class="btn secondary book" data-tier="strategy" href="#" style="text-align:center">Book a Strategy Call</a>
+      </div>
+
+      <div class="tier featured">
+        <div class="badge">Most popular</div>
+        <h3>Architecture Deep-Dive</h3>
+        <div class="price">$1,000 <span>/ 90 min + review</span></div>
+        <div class="who">I review your system before we meet, then we fix the hard parts.</div>
+        <ul>
+          <li>Pre-call review of your AI system, repo, or design docs</li>
+          <li>90-min working session (recorded on request)</li>
+          <li>Written architecture review with prioritized, ranked recommendations</li>
+          <li>Coverage of reliability, cost/latency, eval strategy &amp; agent orchestration</li>
+          <li>7-day async follow-up window</li>
+        </ul>
+        <a class="btn book" data-tier="deepdive" href="#" style="text-align:center">Book a Deep-Dive</a>
+      </div>
+    </div>
+    <p class="reassure" style="margin-top:24px">Team session or a scope between these? <a class="book" href="#">Book the Deep-Dive</a> and note it in the intake — we'll right-size it.</p>
+  </div>
+</section>
+
+<!-- Deliverables -->
+<section id="deliverables">
+  <div class="wrap">
+    <div class="eyebrow">What you walk away with</div>
+    <h2>Concrete output, not just a nice chat.</h2>
+    <div class="deliver" style="margin-top:18px">
+      <div>A recorded working session (if you want it)</div>
+      <div>A written recap / architecture review</div>
+      <div>Prioritized, ranked recommendations</div>
+      <div>Reference architectures &amp; patterns</div>
+      <div>Specific model / tool / vendor guidance</div>
+      <div>An async follow-up window for questions</div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>From booking to recap in under a week.</h2>
+    <div class="steps" style="margin-top:18px">
+      <div class="step"><div class="n">1</div><h3>Book &amp; pay</h3><p>Pick a slot and confirm. Payment secures the time.</p></div>
+      <div class="step"><div class="n">2</div><h3>Intake</h3><p>Short form so I show up with context — plus any docs or repo access for a Deep-Dive.</p></div>
+      <div class="step"><div class="n">3</div><h3>The session</h3><p>We work the actual problem live. No slides.</p></div>
+      <div class="step"><div class="n">4</div><h3>Written recap</h3><p>You get the recap and next steps within 2 business days.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions</h2>
+    <div style="margin-top:18px">
+      <details><summary>What's your money-back guarantee?</summary><p>If you finish the session and don't have clear, actionable next steps, reply within 48 hours and I'll refund it in full. No forms, no friction.</p></details>
+      <details><summary>What time zones do you cover?</summary><p>Booking shows live availability in your time zone. If nothing fits, book anyway and note your constraints in the intake — I'll find a slot.</p></details>
+      <details><summary>Can my team join?</summary><p>Yes. Up to a few people can join the call. For a working team session, book the Deep-Dive and flag it in the intake so we scope it right.</p></details>
+      <details><summary>Is this confidential?</summary><p>Yes. Everything you share stays between us. Happy to sign a mutual NDA before a Deep-Dive — mention it in the intake.</p></details>
+      <details><summary>What do you need before a Deep-Dive?</summary><p>Whatever paints the picture: design docs, an architecture diagram, key code paths, or read-only repo access. The more I see beforehand, the more we get done live.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Lead Capture -->
+<section id="lead">
+  <div class="wrap center">
+    <div class="eyebrow">Not ready to book yet?</div>
+    <h2>Get the AI Leverage Audit — free.</h2>
+    <p class="lead">A self-scoring checklist that surfaces the 2–3 AI moves with the highest leverage for your workflow. Takes 5 minutes.</p>
+    <div class="lead-form-wrap">
+      <form id="lead-form" action="https://formsubmit.co/ptnpnkh02@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New lead — AI Advisory page" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="" id="form-next" />
+        <div class="lead-form-row">
+          <input class="lead-email" type="email" name="email" placeholder="your@email.com" required />
+          <button type="submit" class="btn" style="border:none;cursor:pointer;">Send me the audit →</button>
+        </div>
+      </form>
+      <p class="lead-msg">No spam. Unsubscribe any time.</p>
+      <p class="success-msg" id="success-msg">✓ You're in — check your inbox.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="finalcta">
+  <div class="wrap">
+    <h2>Stop guessing on your AI architecture.</h2>
+    <p class="lead center">Book a session this week and walk away with a plan your team can ship.</p>
+    <a class="btn book" href="#pricing">Book a session →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="yr"></span> dg0n · 1-on-1 AI Advisory · <a href="mailto:ptnpnkh02@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+  /* ==========================================================================
+     CONFIG — set these once and the buttons wire themselves up.
+     ========================================================================== */
+  const CONFIG = {
+    // Your booking link (Calendly or Cal.com). Add ?utm or per-tier event types if you like.
+    BOOKING_URL: "https://REPLACE_WITH_YOUR_CALENDLY_OR_CAL_LINK",
+
+    // Optional per-tier booking links. If set, they override BOOKING_URL for that tier.
+    BOOKING_URL_STRATEGY: "",   // e.g. https://cal.com/dg0n/strategy-call
+    BOOKING_URL_DEEPDIVE: "",   // e.g. https://cal.com/dg0n/architecture-deep-dive
+
+    // If your booking tool already collects payment on confirm (recommended), leave this empty.
+    // Otherwise set a Stripe Payment Link and buttons will send users to pay.
+    PAYMENT_URL: ""             // e.g. https://buy.stripe.com/xxxx
+  };
+
+  // Footer year
+  document.getElementById("yr").textContent = "2026";
+
+  // Lead form: set _next redirect URL so FormSubmit returns here with ?lead=1
+  (function () {
+    var nextEl = document.getElementById("form-next");
+    if (nextEl) nextEl.value = window.location.href.split("?")[0] + "?lead=1";
+    // Show success banner if redirected back
+    if (new URLSearchParams(window.location.search).get("lead") === "1") {
+      var form = document.getElementById("lead-form");
+      var msg  = document.getElementById("success-msg");
+      if (form) form.style.display = "none";
+      if (msg)  msg.style.display  = "block";
+    }
+  })();
+
+  // Wire every .book element to the right destination.
+  function destFor(tier) {
+    if (tier === "strategy" && CONFIG.BOOKING_URL_STRATEGY) return CONFIG.BOOKING_URL_STRATEGY;
+    if (tier === "deepdive" && CONFIG.BOOKING_URL_DEEPDIVE) return CONFIG.BOOKING_URL_DEEPDIVE;
+    // Payment-first flow only if booking tool doesn't collect payment itself.
+    if (CONFIG.PAYMENT_URL) return CONFIG.PAYMENT_URL;
+    return CONFIG.BOOKING_URL;
+  }
+
+  document.querySelectorAll(".book").forEach(function (el) {
+    const href = el.getAttribute("href") || "";
+    // Leave on-page anchors (#pricing, #how) alone — they scroll.
+    if (href.startsWith("#") && href.length > 1 && el.dataset.tier === undefined) return;
+    el.addEventListener("click", function (e) {
+      const tier = el.dataset.tier;
+      const dest = destFor(tier);
+      if (dest && dest.indexOf("REPLACE_WITH") === -1) {
+        e.preventDefault();
+        window.open(dest, "_blank", "noopener");
+      }
+      // If still a placeholder, anchor buttons just scroll to #pricing (default behavior).
+    });
+  });
+</script>
+</body>
+</html>
